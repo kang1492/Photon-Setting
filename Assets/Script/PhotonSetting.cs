@@ -15,14 +15,15 @@ public class PhotonSetting : MonoBehaviour
     [SerializeField] Dropdown region;
 
 
-    void Start()
+    private void Awake()
     {
-        
+        PlayFabSettings.TitleId = "664BF";
     }
     // 매개변수 LoginResult <- 로그인 성공 여부 반환합니다.
 
-    public void LoginSuccss(LoginResult result)
+    public void LoginSuccess(LoginResult result)
     {
+        Debug.Log("로그인 성공");
         // AutomaticallySyncScene 마스터 클라이언트를 기준으로 씬을 동기화 할지 안할지 결정하는 기능
         // false = 동기화를 하지 않겟다
         // true = 마스터 클라이언트를 기준으로 동기화를 하겟다.
@@ -37,6 +38,9 @@ public class PhotonSetting : MonoBehaviour
 
         // 입력한 지역을 설정합니다.                                                   // 0번째 지역
         PhotonNetwork.PhotonServerSettings.AppSettings.FixedRegion = region.options[region.value].text;
+
+        // 서버 접속
+        PhotonNetwork.LoadLevel("Photon Lobby");
 
     }
 
@@ -72,5 +76,24 @@ public class PhotonSetting : MonoBehaviour
                 SignUpFailure   // 회원 가입이 실패햇을 때 회원 가입 실패 함수 호출
 
             );
+
     }
+
+    public void Login()
+    {
+        var request = new LoginWithEmailAddressRequest
+        {
+            Email = email.text,
+            Password = password.text,
+        };
+
+        PlayFabClientAPI.LoginWithEmailAddress
+            (
+            request,
+            LoginSuccess,
+            LoginFailure
+            );
+    }
+
+
 }
