@@ -46,7 +46,10 @@ public class PhotonSetting : MonoBehaviour
 
     public void LoginFailure(PlayFabError error)
     {
-        Debug.Log("로그인 실패");
+        // 매개변수 2개
+        PopUp.Show("LOGIN FAILURE", "Login Failed.\n Please login again");// 9-22
+
+        //Debug.Log("로그인 실패");
     }
 
     public void SignUpSuccess(RegisterPlayFabUserResult result)
