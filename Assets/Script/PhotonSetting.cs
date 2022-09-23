@@ -5,10 +5,16 @@ using Photon.Pun;
 using UnityEngine.UI;
 using PlayFab;
 using PlayFab.ClientModels;
+using UnityEngine.EventSystems; // 템
+
 //using TMPro;
+
 
 public class PhotonSetting : MonoBehaviour
 {
+    EventSystem eventSystem; // 텝
+    public Selectable firstInput;// 처음에 선택 되는 커서
+
     [SerializeField] InputField email;
     [SerializeField] InputField password;
     [SerializeField] InputField username;
@@ -17,9 +23,37 @@ public class PhotonSetting : MonoBehaviour
 
     private void Awake()
     {
+        eventSystem = EventSystem.current;
+        // 처음은 Email Input Field를 선택하도록 설정합니다.
+        firstInput.Select(); // 탭
+
         PlayFabSettings.TitleId = "664BF";
     }
     // 매개변수 LoginResult <- 로그인 성공 여부 반환합니다.
+
+    private void Update() // 키 입력을 
+    {
+        if(Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
+        {
+            // TAB + LeftShift는 위의 Selectable 객체를 선택합니다.
+            Selectable next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
+
+            if(next != null)
+            {
+                next.Select();
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            Selectable next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+
+            if(next != null)
+            {
+                next.Select();
+            }
+        }
+
+    }
 
     public void LoginSuccess(LoginResult result)
     {
@@ -47,7 +81,11 @@ public class PhotonSetting : MonoBehaviour
     public void LoginFailure(PlayFabError error)
     {
         // 매개변수 2개
-        PopUp.Show("LOGIN FAILURE", "Login Failed.\n Please login again");// 9-22
+        PopUp.Show
+            (
+            "MEMBERSHIP\nSUCCESSFUL", 
+            "Congratulations on your\nSuccessful Membership Registration"
+            );// 9-22
 
         //Debug.Log("로그인 실패");
     }
