@@ -288,11 +288,11 @@ RectTransform:
   m_Father: {fileID: 1138358865}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -50}
+  m_SizeDelta: {x: 500, y: 750}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &222358203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 686534019}
   - component: {fileID: 686534018}
   m_Layer: 5
-  m_Name: InputField (Legacy)
+  m_Name: Room Person
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -745,6 +745,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 817471044}
+  - component: {fileID: 817471046}
+  - component: {fileID: 817471045}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -769,9 +771,49 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 0.000024260622, y: -0.000027825065}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &817471045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817471043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
+--- !u!114 &817471046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817471043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 25
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &848377797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,10 +1217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1396,8 +1438,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1068876350}
   m_HandleRect: {fileID: 1068876349}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.61
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1828,7 +1870,7 @@ GameObject:
   - component: {fileID: 1618429080}
   - component: {fileID: 1618429079}
   m_Layer: 5
-  m_Name: InputField (Legacy)
+  m_Name: Room Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2295,7 +2337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087238430}
-  - component: {fileID: 2087238429}
+  - component: {fileID: 2087238431}
   m_Layer: 0
   m_Name: Room Manager
   m_TagString: Untagged
@@ -2303,21 +2345,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2087238429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087238428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9f1c4f8f02fa14497f996fff49b257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connect: {fileID: 0}
-  currentRegion: {fileID: 0}
-  currentLobby: {fileID: 0}
 --- !u!4 &2087238430
 Transform:
   m_ObjectHideFlags: 0
@@ -2333,3 +2360,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2087238431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087238428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250b4721154059a4c81f2c2d56e8920e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: {fileID: 1618429079}
+  roomPerson: {fileID: 686534018}
+  roomCreate: {fileID: 1532749529}
+  roomJoin: {fileID: 1353602821}
+  roomPrefab: {fileID: 6063309627435596950, guid: ffe2d65bb1584384193c185eb536c57d, type: 3}
+  roomContent: {fileID: 817471044}
