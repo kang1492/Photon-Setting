@@ -51,7 +51,7 @@ public class RoomManager : MonoBehaviourPunCallbacks // 이걸해양 매칭 사용할수 �
     }
 
     // 포톤 룸은 최대 10명까지만 접속할 수 있도록 설정할 수 있습니다.
-    public void OnlickCreatRoom()
+    public void OnClickCreatRoom()
     {
         // 룸 옵션을 설정합니다.
         RoomOptions Room = new RoomOptions();
