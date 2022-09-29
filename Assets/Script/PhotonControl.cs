@@ -7,8 +7,12 @@ public class PhotonControl : MonoBehaviourPun
     [SerializeField] float angleSpeed;
 
     [SerializeField] Camera cam;
+
+    [SerializeField] Animator animator; // 에니메이터 가져오기9-29
     void Start()
     {
+        animator = GetComponent<Animator>(); // 에니메이터
+
         // 현재 플레이어가 나 자신이라면
         if (photonView.IsMine)
         {
@@ -30,6 +34,12 @@ public class PhotonControl : MonoBehaviourPun
         if (!photonView.IsMine)
         {
             return;
+        }
+
+        if (Input.GetButtonDown("Fire1")) // 9-29
+        {
+            //animator.Play("Attack");
+            animator.SetBool("Attack", true); // 에니메이션 줄2개 추가후 9-29
         }
 
         // 내용
