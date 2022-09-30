@@ -39,7 +39,8 @@ public class PhotonControl : MonoBehaviourPun
         if (Input.GetButtonDown("Fire1")) // 9-29
         {
             //animator.Play("Attack");
-            animator.SetBool("Attack", true); // 에니메이션 줄2개 추가후 9-29
+            //animator.SetBool("Attack", true); // 에니메이션 줄2개 추가후 9-29
+            animator.SetTrigger("Attack"); // 9-30 수정
         }
 
         // 내용
