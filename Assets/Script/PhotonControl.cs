@@ -1,7 +1,10 @@
 using Photon.Pun;
 using UnityEngine;
+using PlayFab;
+using PlayFab.ClientModels;
+using System.Collections.Generic;
 
-public class PhotonControl : MonoBehaviourPun
+public class PhotonControl : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] float speed = 5.0f;
     [SerializeField] float angleSpeed;
@@ -9,6 +12,8 @@ public class PhotonControl : MonoBehaviourPun
     [SerializeField] Camera cam;
 
     [SerializeField] Animator animator; // 에니메이터 가져오기9-29
+
+    public int score;
     void Start()
     {
         animator = GetComponent<Animator>(); // 에니메이터
@@ -65,6 +70,14 @@ public class PhotonControl : MonoBehaviourPun
     {
         if(other.gameObject.name == "Crystal(Clone)")
         {
+            if (photonView.IsMine) // 자기 자신일때만 10-5
+            {
+                score++;
+                //UIManager.instance.score++; // 스코어 점수 ++ 해라 /10-5
+            }
+
+            PlayFabDataSave(); // 세이브 데이터 함수 호출 10-5
+
             PhotonView view = other.gameObject.GetComponent<PhotonView>();
 
             // 자기 자신
@@ -74,5 +87,40 @@ public class PhotonControl : MonoBehaviourPun
                 PhotonNetwork.Destroy(other.gameObject);
             }
         }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        // 로컬 오브젝트라면 쓰기 부분이 실행됩니다.
+        if (stream.IsWriting)
+        {
+            // 네트워크를 통해 score 값을 보냅니다.
+            stream.SendNext(score);
+        }
+        else //원격 오브젝트라면 읽기 부분이 실행됩니다.
+        {
+            score = (int)stream.ReceiveNext();
+        }
+    }
+
+    public void PlayFabDataSave() // 플레이 데이터 세이브 함수
+    {
+        PlayFabClientAPI.UpdatePlayerStatistics
+        (
+            new UpdatePlayerStatisticsRequest // 데이터 저장 함수
+            {
+                Statistics = new List<StatisticUpdate>
+                {
+                    new StatisticUpdate
+                    {
+                        StatisticName = "Score", Value = score
+                    },
+                }
+            },
+
+            // 무명 함수
+            (result) => { Debug.Log(" 값 저장 성공"); },
+            (error) => { Debug.Log("값 저장 실패"); }
+        );
     }
 }

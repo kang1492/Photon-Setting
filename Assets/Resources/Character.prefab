@@ -5210,6 +5210,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 9203003839590227249}
+  - {fileID: 9203003839590227251}
   - {fileID: 6936967412581499727}
   sceneViewId: 0
   InstantiationId: 0
@@ -5230,6 +5231,7 @@ MonoBehaviour:
   angleSpeed: 100
   cam: {fileID: 9203003839567922825}
   animator: {fileID: 0}
+  score: 0
 --- !u!54 &2453017051014908041
 Rigidbody:
   m_ObjectHideFlags: 0
