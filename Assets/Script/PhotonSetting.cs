@@ -108,6 +108,8 @@ public class PhotonSetting : MonoBehaviour
             Email = email.text,        // 입력한 Email
             Password = password.text,  // 입력한 비밀번호
             Username = username.text,  // 입력한 유저 이름
+            DisplayName = username.text
+            // 점수 표시 아이디 보이게
         };
 
         PlayFabClientAPI.RegisterPlayFabUser

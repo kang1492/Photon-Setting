@@ -119,8 +119,9 @@ public class PhotonControl : MonoBehaviourPun, IPunObservable
             },
 
             // 무명 함수
-            (result) => { Debug.Log(" 값 저장 성공"); },
-            (error) => { Debug.Log("값 저장 실패"); }
+            (result) => { UIManager.instance.scoreText.text = "Current Crystal : " + score.ToString(); },
+            (error) => { UIManager.instance.scoreText.text = "No value Saverd "; }
+            // 값이 저장되지않았다
         );
     }
 }
