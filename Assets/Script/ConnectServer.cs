@@ -6,9 +6,13 @@ using Photon.Realtime;
 
 public class ConnectServer : MonoBehaviourPunCallbacks
 {
-    
-    public void SelectLobby()
+    private string serverName;//10-7
+    public void SelectLobby(string text) //10-7
     {
+        // Challeger Server
+        serverName = text; //10-7
+
+        // 서버접속
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -19,7 +23,8 @@ public class ConnectServer : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.JoinLobby(new TypedLobby("Count", LobbyType.Default));
+
+        PhotonNetwork.JoinLobby(new TypedLobby(serverName, LobbyType.Default));
     }
 
 }
