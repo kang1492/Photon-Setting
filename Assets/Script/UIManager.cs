@@ -18,6 +18,11 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
+
+        // L value 와 R value
+        // L value : 표현식 이후에도 사라지지 않은 값 ( 메모리 공간을 가지고 있는 변수)
+        // R value : 표현식 이후에는 사라지는 값 ( 임시 변수 )
+        int box = 10;
     }
 
     public void GetLeaderBorder()
@@ -50,5 +55,20 @@ public class UIManager : MonoBehaviour
             }
         },
         (error) => Debug.Log("리더보드를 불러오지 못했습니다."));
+    }
+
+    public void GetVirtualCurrency()
+    {
+        var request = new AddUserVirtualCurrencyRequest()
+        {
+            VirtualCurrency = "RP", // Playfab 에 설정한 통화 코드
+            Amount = 100 // 가상화패에 추가할 값
+        };
+
+        PlayFabClientAPI.AddUserVirtualCurrency
+        (                                                       // 가상 돈
+            request, (result) => Debug.Log("돈이 추가되었습니다." + result.Balance),
+            (error) => Debug.Log("가상 화폐를 획득ㅏ지 못했습니다.")
+        );
     }
 }

@@ -11,15 +11,25 @@ public class WebLoad : MonoBehaviour
     [SerializeField] RawImage [] webImage; // 이미지 여러개 받기
     //[SerializeField] RawImage webImage; 이미지 1개 받기
 
+    [SerializeField] string[] imageAddress; // 10-10
+
     void Awake()
     {
         // 데이터를 로드할 때
-        string a = "https://raw.githubusercontent.com/Unity2033/Unity-3D-Example/main/Assets/Class/Photon%20Server/Texture/Ice%20Kingdom.jpg";
-        
+        //string a = "https://raw.githubusercontent.com/Unity2033/Unity-3D-Example/main/Assets/Class/Photon%20Server/Texture/Ice%20Kingdom.jpg";
+
+        imageAddress[0] = "https://raw.githubusercontent.com/Unity2033/Unity-3D-Example/main/Assets/Class/Photon%20Server/Texture/Ice%20Kingdom.jpg";
+        imageAddress[1] = "https://github.com/Unity2033/Unity-3D-Example/blob/main/Assets/Class/Photon%20Server/Texture/Leader%20Board%20Panel.png?raw=true";
+        imageAddress[2] = "https://github.com/Unity2033/Unity-3D-Example/blob/main/Assets/Class/Photon%20Server/Texture/Leader%20Board%20Panel.png?raw=true";
+        imageAddress[3] = "https://github.com/Unity2033/Unity-3D-Example/blob/main/Assets/Class/Photon%20Server/Texture/Leader%20Board%20Panel.png?raw=true";
+
         // [0] = ""
         // [1] = ""
-        
-        StartCoroutine(WebImageLoad(a));
+
+        for (int i = 0; i < imageAddress.Length; i++)
+        {
+            StartCoroutine(WebImageLoad(imageAddress[i]));
+        }
     }
 
     private void Start()
