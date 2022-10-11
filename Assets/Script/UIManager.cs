@@ -71,4 +71,22 @@ public class UIManager : MonoBehaviour
             (error) => Debug.Log("가상 화폐를 획득ㅏ지 못했습니다.")
         );
     }
+
+    public void PurchaseItem()
+    {
+        var request = new PurchaseItemRequest()
+        {
+            CatalogVersion = "Game Shop", // playfab에 있는 상점
+            ItemId = "Dragon Skin",       // 구매할 아이템 코드
+            VirtualCurrency = "RP",       // 구매할 가상 화패 단위
+            Price = 100                   // 가격
+        };
+
+        PlayFabClientAPI.PurchaseItem
+        (
+            request,
+            (result) => print("아이템 구입 성공"),
+            (error) => print("아이템 구입 실패")
+        );
+    }
 }
